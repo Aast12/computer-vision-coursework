@@ -1,0 +1,68 @@
+\documentclass[]{article}
+\usepackage[margin={1in, 0.3in}]{geometry}
+                       
+\title{hw04}
+\date{07 / 10 / 21}
+\author{Andrés Alam Sánchez Torres (A00824854)}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item What are the three approaches for data acquisition? Give a brief description of each one.
+
+    \textbf{Data discovery}  consists of sharing or search for new datasets. They can be shared using 
+    collaborative analysis platforms or web platforms to publish datasets. The data search consists of using 
+    systems to extract datasets from data lakes or other sources of data, such as data spread across the web.\par
+    \textbf{Data augmentation} Data augmentation complements data discovery by extending existing datasets. This 
+    can be achieved by deriving latent semantics, allowing generating meaningful entities to complement the 
+    dataset. Entity augmentation can also be performed to fill incomplete data using systems to search consistent 
+    values in external data sources. Lastly, data can also be augmented by integrating different datasets. \par
+    \textbf{Data generation} is used to generate data to complement or create datasets with synthetic data or through 
+    crowdsourcing. Crowdsourcing is used to generate and/or label data using human workforce, while synthetic data
+    can be generated automatically using different techniques like GANs and human-defined policies to transform 
+    existing data.
+
+
+    \item Describe two methods to generate synthetic data.
+    
+    \textbf{Generative Adversarial Networks (GANS)} is a technique that consists of the training of two neural Networks: a Generative
+    network and a discriminative network. The role of the generative network is to generate data while the discriminative
+    network is trained to discriminate the generated data based on a real data distribution. \textbf{Policies} are a different method that 
+    consist on transforming existing data using human-defined that can guarantee generating realistic data.
+
+    \item Describe how active learning can be used to label data.
+    
+    Active learning is a practice similar to manual labeling, but it focuses on selecting a relevant subset of unlabeled 
+    examples, say the more interesting, and label the remaining examples using the model itself.
+
+    \item Mention at least 3 crowd-based services you can use to label data.
+    
+    Amazon Mechanical Turk, Qurk, CrowdER.
+
+    \item Mention at least 3 services you can use to preprocess data.
+    
+    Data Tamer, Corleone, Qurk.
+
+    \item In machine learning, what is human in the loop?
+    
+    This term refers to the need of human presence in the process of training a machine learning model. This 
+    intervention can come in different ways, such as queries to obtain labels from unlabeled training examples.
+
+    \item Explain weak supervision.
+    
+    Weak supervision techniques generate labels ("weak labels") semi-automatically, that may not be as good as 
+    manual labels, but are faster to obtain and good enough to train a model with reasonable accuracy.
+
+    \item Explain transfer learning.
+    
+    Transfer learning is the practice of re-using a pre-tained model, that already performs well at a task, to 
+    train a new model for a target task that is related to the one solved by the pre-trained model.
+    
+    \item Explain a concept that you found interesting and was not included in the previous questions.
+    
+
+\end{enumerate}
+
+\end{document}
