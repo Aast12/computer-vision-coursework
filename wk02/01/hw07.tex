@@ -1,0 +1,133 @@
+\documentclass[]{article}
+\usepackage[margin={1in}]{geometry}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{verbatim}
+\usepackage[obeyspaces]{url}
+
+\lstset{breaklines=true} 
+                       
+\title{\textbf{RLM}}
+\date{\small 11 / 01 / 21}
+\author{\small Andrés Alam Sánchez Torres (A00824854)}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item Investiga el concepto de Homocedasticidad en el contexto de una RLM (adjunta la
+    referencia de dónde obtuviste esta respuesta).
+
+    Homocedasticidad se refiere a la caracteristica de un modelo de regresión lineal de mantener una 
+    varianza constante en los errores. En otras palabras, el error de una predicción no varía mucho al 
+    cambiar los valores de las variables independientes. Si sucede esta variación, entonces se debe 
+    utilizar otro modelo no lineal que represente mejor el problema [1].
+
+
+    \item Investiga los términos de correlación y covarianza, incluye cuáles son las fórmulas para
+    calcularlas, menciona qué indican los valores de correlación y covarianza respecto a un
+    set de datos. 
+
+    Dados dos conjuntos de datos $X$ y $Y$ de $n$ elementos, con $x_{i} \in X, y_{i} \in Y$.
+
+    La correlacion es un valor normalizado entre -1 y 1, que mide la relación lineal entre dos 
+    variables, y se expresa de la forma:
+
+    $$r_{XY} = \frac{\sum_{i=1}^{n}(x_{i} - \bar{x})(y_{i} - \bar{y})}{\sqrt{\sum_{i=1}^{n}(x_{i} - \bar{x})^2\sum_{i=1}^{n}(y_{i} - \bar{y})^2}}$$
+    
+    Si $r_{XY} > 0$, existe una correlación positiva, por lo que ambas variables varían en la misma 
+    dirección, es decir, una tiende a incrementar cuando la otra también lo hace. Si $r_{XY} > 0$, 
+    existe una correlación negativa, por lo que las variables varían en direcciones opuestas. 
+    $r_{XY} = 0$ indica que las variables no estan correlacionadas. Asimismo, la magnitud $|r_{XY}|$
+    indica la 'fuerza' con la que estan relacionadas las variables
+    
+    La covarianza es un valor para medir la relación que hay entre dos conjuntos de datos, respecto a 
+    su variación. Se expresa de la forma:
+    
+    $$cov(X, Y) = \sum_{i=1}^{n}\frac{(x_{i} - \bar{x})(y_{i} - \bar{y})}{n}$$
+    
+    Si $cov(X, Y) > 0$, Y tiende a incrementar cuando X incrementa. Si $cov(X, Y) > 0$, Y tiende a 
+    decrementar cuando X incrementa. $cov(X, Y) = 0$ indica que las variables no estan correlacionadas.
+
+    Este valor es similar a la correlación; sin embargo, esta no es una medida normalizada, por lo que 
+    su magnitud no refleja una misma relación para diferentes pares de variables[2].
+    
+    \item La siguiente tabla indica la relación entre las especificaciones de una tarjeta RAM y su
+    precio, calcula la covarianza y la correlación.
+
+    \begin{center}
+        \begin{tabular}[]{| c | c |}
+            \hline
+            RAM (GB) (X) & Price (Y)\\
+            \hline
+            4 & 7,000 \\
+            8 & 9,000 \\
+            12 & 12,000 \\
+            16 & 16,000 \\
+            \hline
+        \end{tabular}
+    \end{center}
+
+    $$\bar{x} = \frac{4 + 8 + 12 + 16}{4} = \frac{40}{4} = 10$$
+    $$\bar{y} = \frac{7000, 9000, 12000, 16000}{4} = \frac{44000}{4} = 11000$$
+
+    \begin{equation}
+        \begin{split}
+            \sum_{i=1}^{n}(x_{i} - \bar{x})(y_{i} - \bar{y}) =&\quad (4 - 10)(7000 - 11000) + (8 - 10)(9000 - 11000) \\ 
+                        &\quad + (12 - 10)(12000 - 11000) + (16 - 10)(16000 - 11000)\\
+                       =&\quad 60000\\
+            \sum_{i=1}^{n}(x_{i} - \bar{x})^2 & = (4 - 10)^2 + (8 - 10)^2 + (12 - 10)^2 + (16 - 10)^2\\
+                      =&\quad 80\\
+            \sum_{i=1}^{n}(y_{i} - \bar{y})^2 & = (7000 - 11000)^2 + (9000 - 11000)^2 + (12000 - 11000)^2\\
+                       &\quad + (16000 - 11000)^2\\
+                      =&\quad 46000000\\
+                      \\
+            cov(X, Y) =&\quad \sum_{i=1}^{n}\frac{(x_{i} - \bar{x})(y_{i} - \bar{y})}{n}\\
+                      =&\quad \frac{1}{n}\cdot\sum_{i=1}^{n}(x_{i} - \bar{x})(y_{i} - \bar{y})\\
+                      =&\quad \frac{60000}{4}\\
+                      =&\quad 15000\\
+            r_{XY} =&\quad \frac{\sum_{i=1}^{n}(x_{i} - \bar{x})(y_{i} - \bar{y})}{\sqrt{\sum_{i=1}^{n}(x_{i} - \bar{x})^2\sum_{i=1}^{n}(y_{i} - \bar{y})^2}}\\
+                   =&\quad \frac{60000}{\sqrt{80 \cdot 46000000}}\\
+                   =&\quad 0.989071
+        \end{split}
+    \end{equation}
+
+
+    \item Investiga el concepto de colinealidad y multicolinealidad en el contexto de una RLM,
+    explica cómo se puede utilizar una matriz de correlación para identificar la
+    multicolinealidad. (adjunta la referencia de dónde obtuviste esta respuesta). 
+    
+    La multicolinealidad se refiere al caso en el que múltiples variables independientes tienen 
+    una gran correlacion entre ellas. Esto atenta con la idea de que las variables independientes 
+    tienen que ser independientes entre sí. Puede generar problemas al tratar de crear un modelo 
+    debido a los cambios que pueden ocurrir a una variable no afectan las demás variables.
+
+    Para detectar esto se puede utilizar una matriz de correlación. Esta es una matriz cuyas columnas
+    y filas estan compuestas de todas las variables independientes, y cada celda contiene el valor de 
+    correlación entre las variables correspondientes a su fila y columna. De esta forma se puede 
+    visualizar la correlación que hay entre una variable independiente y todas las demás. La multicolinealidad
+    se puede identificar al encontrar valores en las celdas cercanos a 1 (excepto si es la correlación entre 
+    una variable y si misma) [3].
+
+\end{enumerate}
+
+\newpage
+
+\begin{thebibliography}{9}
+    \bibitem{homoskedastic} 
+    Corporate Finance Institute. (n. d.). Homoskedastic.\\
+    \path{https://corporatefinanceinstitute.com/resources/knowledge/other/homoskedastic/}
+    
+    \bibitem{correlacion} 
+    Vinuesa, P. (2020). Correlación: teoría y práctica.\\
+    \path{https://www.ccg.unam.mx/~vinuesa/R4biosciences/docs/Tema8_correlacion.html#introduccion-el-concepto-de-correlacion}
+
+    \bibitem{collinearity} 
+    Wu, S. (2020). Multicollinearity in Regression.\\
+    \path{https://towardsdatascience.com/multi-collinearity-in-regression-fe7a2c1467ea}
+
+    \end{thebibliography}
+
+\end{document}
