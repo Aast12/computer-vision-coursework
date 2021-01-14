@@ -1,0 +1,91 @@
+\documentclass[]{article}
+\usepackage[margin={1in}]{geometry}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage[obeyspaces]{url}
+
+\title{\textbf{Procesamiento de imágenes}}
+\date{\small 14 / 01 / 21}
+\author{\small Andrés Alam Sánchez Torres (A00824854)}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item Determina la matriz de salida al convolucionar la siguiente matriz de entrada:
+    
+    \begin{center}
+        \begin{tabular}[]{| c | c | c | c | c | }
+            \hline
+            3 & 5 & 2 & 8 & 1 \\
+            \hline
+            9 & 7 & 5 & 4 & 3 \\
+            \hline
+            2 & 0 & 6 & 1 & 6 \\
+            \hline
+            6 & 3 & 7 & 9 & 2 \\
+            \hline
+        \end{tabular}
+    \end{center}
+
+    Con el siguiente Kernel:
+
+    \begin{center}
+        \begin{tabular}[]{| c | c | c |}
+            \hline
+            1 & 0 & 0 \\
+            \hline
+            1 & 1 & 0 \\
+            \hline
+            0 & 0 & 1 \\
+            \hline
+        \end{tabular}
+    \end{center}
+
+    \begin{center}
+        \begin{tabular}[]{| c | c | c | c | c | }
+            \hline
+            3 & 5 & 2 & 8 & 1 \\
+            \hline
+            9 & 7 & 5 & 4 & 3 \\
+            \hline
+            2 & 0 & 6 & 1 & 6 \\
+            \hline
+            6 & 3 & 7 & 9 & 2 \\
+            \hline
+        \end{tabular}
+        *
+        \begin{tabular}[]{| c | c | c |}
+            \hline
+            1 & 0 & 0 \\
+            \hline
+            1 & 1 & 0 \\
+            \hline
+            0 & 0 & 1 \\
+            \hline
+        \end{tabular}
+        =
+        \begin{tabular}[]{| c | c | c | }
+            \hline
+            25 & 18 & 17 \\
+            \hline
+            18 & 22 & 17 \\
+            \hline
+        \end{tabular}
+    \end{center}
+
+
+    \item  Cuando realizamos una convolución con una matriz de entrada $A_{6x6}$ y un kernel $C_{3x3}$,
+    obtuvimos una matriz de salida con dimensiones $D_{4x4}$. Dada una matriz de entrada $A_{NxN}$ y
+    un kernel $C_{FxF}$, ¿cuáles serían las dimensiones de nuestra matriz de salida $D$?.
+
+    (N - F + 1) x (N - F + 1)
+
+
+
+\end{enumerate}
+
+
+
+\end{document}
