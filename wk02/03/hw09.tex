@@ -1,0 +1,47 @@
+\documentclass[]{article}
+\usepackage[margin={1in}]{geometry}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{verbatim}
+\usepackage[obeyspaces]{url}
+
+\lstset{breaklines=true} 
+                       
+\title{\textbf{Recolección de imágenes}}
+\date{\small 16 / 01 / 21}
+\author{\small Andrés Alam Sánchez Torres (A00824854)}
+
+\begin{document}
+
+\maketitle
+
+\noindent    
+Para esta actividad verifica que la instalación de Selenium se efectuara correctamente e invierte
+tiempo revisando sus funcionalidades. En base a lo que aprendiste de la librería diseña una estrategia para
+resolver la actividad integradora, escribe un pseudocódigo o un plan de acción de cómo resolverías este
+problema.
+
+\medspace
+
+Los pasos par obtener las imágenes los describo a continuación:
+
+    \begin{enumerate}
+        \item Iniciar selenium en \path{http://image-net.org/}
+        \item Enviar la palabra de clave al input de búsqueda, con name=''q'' y enviar la tecla enter. Lo que llevará
+        a la página con los resultados.
+        \item Obtener el código fuente de la tabla de resultados. Cada link tiene un elemento anchor con un link en 
+        formato \path{synset?wnid=[wnid]}. 
+        \item Obtener con regex los wnid de la tabla de resultados.
+        \item Obtener una lista de todos los urls de imagenes con la api: \\
+        \path{http://www.image-net.org/api/text/imagenet.synset.geturls?wnid=[wnid]}
+        \item Después de este proceso se tendrá una lista de urls, la cual puede ser divida en dos 
+        listas de 80\% y 20\% para los dos tipos de datos.
+        \item Iterar cada lista, descargando cada imagen con opencv y guardando en el folder que le corresponde a 
+        dicha lista.
+        
+    \end{enumerate}
+
+
+
+\end{document}
